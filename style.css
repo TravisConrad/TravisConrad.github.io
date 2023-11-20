@@ -1,0 +1,187 @@
+body {
+    min-height: 200vh;
+    background-color:#ececec;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Hide overflow to prevent scrollbars */
+  }
+
+  .profile-pic-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 10px; /* Adjust the margin as needed */
+    z-index: 2;
+}
+
+.profile-pic {
+    width: 100px; /* Adjust as needed */
+    height: auto;
+    border-radius: 50%; /* Optional: makes the image circular */
+}
+  
+  .rain-container {
+    height: 50vh;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .raindrop {
+    position: absolute;
+    width: 2px; /* Adjust the width of the raindrop */
+    height: 10px; /* Adjust the height of the raindrop */
+    background-color: lightblue; /* Change to light blue or your preferred color */
+    opacity: 0.8; /* Adjust opacity as needed */
+    animation: fall 2s linear infinite;
+  }
+  
+  .line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0px; /* Initial height of the line */
+    background-color: lightblue; /* Change to your preferred color */
+    transition: height 0.5s ease; /* Smooth height transition */
+    z-index: 1; /* Behind raindrops */
+    overflow: hidden;
+  }
+  
+  @keyframes fall {
+    from {
+      transform: translateY(-20px);
+    }
+    to {
+      transform: translateY(100vh);
+    }
+  }
+  
+  /* Add fill mode to keep raindrops at the bottom */
+  .raindrop {
+    animation: fall 2s linear infinite forwards;
+  }
+
+  .drain {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10%; /* Drain spans the entire width of the container */
+    height: 50px; /* Increase the height of the flat drain surface for a larger clickable area */
+    z-index: 10; /* Ensure the drain is above other elements */
+    cursor: pointer; /* Cursor changes to pointer to indicate it's clickable */
+}
+  
+.plug {
+  position: absolute;
+  top: 30px; /* Adjust vertically within the larger drain area */
+  left: 12px; /* Adjust horizontally as needed */
+  width: 60px; /* Width of the plug */
+  height: 10px; /* Height of the plug */
+  background-color: #141313; /* Color of the plug */
+  border-radius: 10px; /* Rounded corners for the plug */
+}
+  
+  /* Optional: Add some pseudo-elements for the chain if desired */
+  .plug:before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Position above the plug */
+    left: 26px; /* Position to align with the center of the plug */
+    width: 4px; /* Width of the chain link */
+    height: 10px; /* Height of the chain link */
+    background-color: #141313; /* Color of the chain link to match the plug */
+    border-radius: 2px; /* Slightly rounded edges for the chain link */
+  }
+  .hole {
+    position: absolute;
+    bottom: 0px;
+    left: 41px; /* Center the hole beneath the plug */
+    transform: translateX(-50%); /* Center the hole */
+    width: 70px; /* Width of the hole */
+    height: 10px; /* Height of the hole */
+    background-color: #000; /* Black hole */
+    border-radius: 0 0 30px 30px; /* Rounded bottom to mimic a hole */
+    z-index: 2; /* Ensure the hole is under the plug */
+    background: radial-gradient(ellipse at center, #555 0%, #000 100%);
+    box-shadow: inset 0 0 10px #000000;
+  }
+
+  .rain-container,
+.line {
+  z-index: 1; /* Lower than the cards container */
+}
+
+#mainBubble {
+  position: absolute;
+  bottom: 0;
+  display: none; /* Initially hidden */
+  z-index: 15;
+}
+
+.random-bubble {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  border-radius: 50%;
+  z-index: 3;
+}
+
+  /* Styles for flip cards */
+  .cards-container {
+    position: relative;
+    z-index: 10; /* Higher than any other element's z-index */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+    margin-top: 10vh; /* Adjust this value to position the cards below the rain animation or as needed */
+  }
+  
+  .card {
+    perspective: 1000px; /* Depth of the flip effect */
+    width: 200px; /* Width of the card */
+    height: 250px; /* Height of the card */
+    margin: 15px; /* Spacing between cards */
+  }
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    transform-origin: center;
+  }
+  
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back side when it's facing away */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px; /* Modern rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+  .card-front {
+    background-color: #fff;
+  }
+  
+  .card-back {
+    background-color: #f8f8f8;
+    color: #333;
+    transform: rotateY(180deg); /* Flip the back card to the back */
+  }
+  
