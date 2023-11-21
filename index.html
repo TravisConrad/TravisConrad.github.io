@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/devicon/devicon.min.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Raindrop Animation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Include the Heebo font -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+    <title>Travis' Portfolio</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
     <!-- Main Bubble -->
-<img src="./images/bubble.png" alt="Bubble" id="mainBubble">
+    <img src="./images/bubble.png" alt="Bubble" id="mainBubble">
     <div class="profile-pic-container">
         <img src="./images/profile-pic.png" alt="Profile Picture" class="profile-pic">
     </div>
+    <div class="welcome-message">
+        Hi, I'm Travis.
+    </div>
+    <button id="pauseButton" class="pause-button1">Pause</button>
     <div class="rain-container">
         <div class="raindrop"></div>
     </div>
     <div class="line">
         <div class="wave"></div> <!-- Add this line to create the wave effect -->
     </div>
-    <div class="splash"></div
-        >
+    <div class="splash"></div>
     <!-- Cards container -->
     <div class="cards-container">
         <div class="card">
@@ -41,7 +49,12 @@
                     <h3>Projects</h3>
                 </div>
                 <div class="card-back">
-                    <p>Projects...</p>
+                    <p>
+                        <a href="https://github.com/TravisConrad/chatter.git" target="_blank">Chatter</a><br>
+                        <a href="./Projects/cardgame.html" target="_blank">Card Game</a><br>
+                        <a href="./Projects/NumberGuesser.html" target="_blank"> Number Guesser</a><br>
+                        <a href="./Projects/snake.html" target="_blank">Snake</a><br>
+                    </p>
                 </div>
             </div>
         </div>
@@ -51,8 +64,27 @@
                     <h3>Experience</h3>
                 </div>
                 <div class="card-back">
-                    <p>Experience...</p>
+                    <!-- Row 1 -->
+                    <div class="icon-row">
+                        <i class="devicon-cplusplus-plain"></i>
+                        <i class="devicon-java-plain"></i>
+                        <i class="devicon-javascript-plain"></i>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="icon-row">
+                        <i class="devicon-html5-plain"></i>
+                        <i class="devicon-css3-plain"></i>
+                        <i class="devicon-react-original"></i>
+                        <i class="devicon-nodejs-plain"></i>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="icon-row">
+                        <i class="devicon-mongodb-plain"></i>
+                        <i class="devicon-python-plain"></i>
+                        <i class="devicon-express-original"></i>
+                    </div>
                 </div>
+                
             </div>
         </div>
         <div class="card">
@@ -61,7 +93,16 @@
                     <h3>Contact</h3>
                 </div>
                 <div class="card-back">
-                    <p>Contact Me...</p>
+                    <form action="https://formspree.io/f/mzblqwgl" method="POST">
+                        <div class="form-group">
+                            <input type="email" id="email" name="_replyto" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Enter your message"required></textarea>
+                        </div>
+                        <button type="submit">Send</button>
+                    </form>
+                    
                 </div>
             </div>
         </div>
