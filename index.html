@@ -29,7 +29,7 @@
     <div class="splash"></div>
     <!-- Cards container -->
     <div class="cards-container">
-        <div class="card">
+        <div class="card" data-card="1">
             <div class="card-inner">
                 <div class="card-front">
                     <h3>About Me</h3>
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-card="2">
             <div class="card-inner">
                 <div class="card-front">
                     <h3>Projects</h3>
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-card="3">
             <div class="card-inner">
                 <div class="card-front">
                     <h3>Experience</h3>
@@ -86,7 +86,7 @@
                 
             </div>
         </div>
-        <div class="card">
+        <div class="card" data-card="4">
             <div class="card-inner">
                 <div class="card-front">
                     <h3>Contact</h3>
@@ -101,7 +101,6 @@
                         </div>
                         <button type="submit">Send</button>
                     </form>
-                    
                 </div>
             </div>
         </div>
@@ -112,5 +111,23 @@
         <div class="hole"></div>
     </div>
     <script src="rain.js"></script>
+    <script>
+        // JavaScript to handle card flipping
+        const cards = document.querySelectorAll(".card");
+
+        cards.forEach((card) => {
+          card.addEventListener("click", () => {
+            // Toggle the 'active' class to flip the card
+            card.classList.toggle("active");
+
+            // Loop through cards and flip back to normal state
+            cards.forEach((otherCard) => {
+              if (otherCard !== card && otherCard.classList.contains("active")) {
+                otherCard.classList.remove("active");
+              }
+            });
+          });
+        });
+    </script>
 </body>
 </html>

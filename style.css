@@ -200,7 +200,6 @@ body {
 
 /* Rest of your CSS remains the same */
 
-
 i.devicon {
   font-size: 40px;
   color: #000;
@@ -239,7 +238,7 @@ i.devicon {
   body {
     min-height: 100vh;
     overflow: auto;
-    margin: 0; /* Remove margin to fill entire viewport */
+    margin: 0; /* Remove margin to fill the entire viewport */
   }
 
   .profile-pic-container {
@@ -260,10 +259,10 @@ i.devicon {
   .raindrop {
     display: block; /* Enable rain effect on mobile */
   }
+
   .line {
     display: none;
   }
-  
 
   /* Remove drain and water filling features on mobile */
   .drain {
