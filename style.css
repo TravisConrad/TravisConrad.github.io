@@ -252,7 +252,7 @@ i.devicon {
   .drain {
     width: 50px; /* Adjusted width for mobile */
     height: 50px; /* Adjusted height for mobile */
-    position: absolute; /* Position it absolutely at the bottom */
+    position: fixed; /* Position it absolutely at the bottom */
     bottom: 0;
     left: 0;
   }
