@@ -25,6 +25,16 @@ function highlightSelectedBetButton(button) {
     button.classList.add('selected');
 }
 
+// Function to show or hide the "Play Again" button based on the game state
+function togglePlayAgainButtonVisibility() {
+    const playAgainButton = document.getElementById('play-again-btn');
+    if (balance > 0 && !gameInProgress) {
+        playAgainButton.style.display = 'block';
+    } else {
+        playAgainButton.style.display = 'none';
+    }
+}
+
 // Randomly assign the blue card
 function assignBlueCard() {
     blueCardIndex = Math.floor(Math.random() * 3); // Assuming 3 cards
@@ -132,6 +142,7 @@ function checkGameOver() {
 // Play again function
 document.getElementById('play-again-btn').addEventListener('click', () => {
     resetGame();
+    document.getElementById('play-again-btn').style.display = 'none'; // Hide the button after clicking
 });
 
 // Restart game function
@@ -190,12 +201,17 @@ function resetGame() {
     }
 }
 
+document.getElementById('play-again-btn').style.display = 'none';
+
 // Initialize game
 assignBlueCard();
 updateBalanceDisplay();
+togglePlayAgainButtonVisibility();
+
+// Hide the "Play Again" button initially
+document.getElementById('play-again-btn').style.display = 'none';
 
 // Return to portfolio function
 document.getElementById('returnToPortfolio').addEventListener('click', function() {
     window.location.href = "./index.html"; // Replace with the URL of your portfolio
 });
-
