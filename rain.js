@@ -23,59 +23,42 @@ function createRaindrop() {
     raindrop.style.height = `${randomHeight}px`;
     raindrop.style.backgroundColor = randomColor;
 
-    // Event listener for when the raindrop animation iterates
     raindrop.addEventListener("animationiteration", () => {
         if (!draining) {
             waterLevel += randomHeight * waterRiseRate;
-
-            // Check if water level is above the threshold
             if (waterLevel >= bubbleCreationThreshold) {
                 bubblesEnabled = true;
             }
         }
-
-        // Limit water level to the top of the page
         if (waterLevel >= window.innerHeight) {
             waterLevel = window.innerHeight;
         }
-
-        // Update the height of the line (water level)
         const line = document.querySelector(".line");
         line.style.height = `${waterLevel}px`;
-
-        raindrop.remove(); // Remove the raindrop after it falls
-
-        // Check if bubble creation is enabled
+        raindrop.remove();
         if (bubblesEnabled) {
             createRandomBubble();
         }
     });
 }
 
-// Function to generate a random light blue or grey color
 function getRandomColor() {
     const colors = ["lightblue", "lightblue", "lightblue", "lightgray", "lightgray"];
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex];
 }
 
-// Function to toggle the drain plug and control water draining
 function toggleDrain() {
     const plug = document.querySelector('.plug');
     const line = document.querySelector('.line');
-
     if (!draining) {
-        // Start draining
         draining = true;
-        bubblesEnabled = false; // Stop bubble creation
-        plug.style.transform = 'translateY(60px)'; // Move the plug down
-
+        bubblesEnabled = false;
+        plug.style.transform = 'translateY(60px)';
         const drainInterval = setInterval(() => {
             if (waterLevel > 0) {
-                waterLevel -= 5; // Adjust the drainage rate
+                waterLevel -= 5;
                 line.style.height = `${waterLevel}px`;
-
-                // Remove bubbles as water level decreases
                 for (let i = activeBubbles.length - 1; i >= 0; i--) {
                     const bubble = activeBubbles[i];
                     const bubbleBottom = parseFloat(getComputedStyle(bubble).bottom.replace('px', ''));
@@ -85,23 +68,21 @@ function toggleDrain() {
                     }
                 }
             } else {
-                clearInterval(drainInterval); // Stop draining when water level is 0
-                plug.style.transform = 'translateY(0)'; // Move the plug back
+                clearInterval(drainInterval);
+                plug.style.transform = 'translateY(0)';
                 draining = false;
             }
-        }, 100); // Adjust the interval as needed
+        }, 100);
     } else {
-        // Stop draining
         clearInterval(drainInterval);
-        plug.style.transform = 'translateY(0)'; // Move the plug back
+        plug.style.transform = 'translateY(0)';
         draining = false;
         if (waterLevel < bubbleCreationThreshold) {
-            bubblesEnabled = true; // Resume bubble creation if water level is below the threshold
+            bubblesEnabled = true;
         }
     }
 }
 
-// Function to create random bubbles
 function createRandomBubble() {
     if (bubblesEnabled && activeBubbles.length < maxBubbles) {
         const bubble = document.createElement('img');
@@ -109,16 +90,16 @@ function createRandomBubble() {
         bubble.classList.add('random-bubble');
         document.body.appendChild(bubble);
 
-        const size = Math.random() * 60 + 10; // Random size between 10px and 70px
+        const size = Math.random() * 60 + 10;
         bubble.style.width = `${size}px`;
         bubble.style.height = `${size}px`;
 
-        const maxBubbleHeight = Math.min(window.innerHeight, waterLevel); // Bubble should not go beyond water level
+        const maxBubbleHeight = Math.min(window.innerHeight, waterLevel);
         const randomX = Math.random() * window.innerWidth;
         bubble.style.left = `${randomX}px`;
-        bubble.style.bottom = '0px'; // Start bubbles at the bottom
+        bubble.style.bottom = '0px';
 
-        const duration = Math.random() * (maxBubbleHeight / 100 * 5000) + 2000; // Random duration based on water level
+        const duration = Math.random() * (maxBubbleHeight / 100 * 5000) + 2000;
 
         bubble.animate([
             { bottom: '0px' },
@@ -137,8 +118,14 @@ function createRandomBubble() {
     }
 }
 
-// Create more raindrops at shorter intervals (adjust the interval as needed)
-setInterval(createRaindrop, 100); // Shorter interval for more raindrops
+setInterval(createRaindrop, 100);
 
 const drain = document.querySelector('.drain');
 drain.addEventListener('click', toggleDrain);
+
+// Added functionality for card flipping on click (suitable for mobile devices)
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('is-flipped');
+    });
+});
