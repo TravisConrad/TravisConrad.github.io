@@ -246,15 +246,17 @@ i.devicon {
   }
 
   .raindrop, .line {
-    display: block; /* Enabled rain effect on mobile */
+    display: block; /* Enable rain effect on mobile */
   }
 
+  /* Remove drain and water filling features on mobile */
   .drain {
-    width: 50px; /* Adjusted width for mobile */
-    height: 50px; /* Adjusted height for mobile */
-    position: absolute; /* Position it absolutely at the bottom */
-    bottom: 0;
-    left: 0;
+    display: none;
+  }
+
+  /* Remove water filling features on mobile */
+  .rain-container {
+    display: none;
   }
 
   .cards-container {
@@ -270,15 +272,5 @@ i.devicon {
   .form-group input[type="email"],
   .form-group textarea {
     width: 100%;
-  }
-
-  /* Adjust rain container to fill from the actual bottom */
-  .rain-container {
-    height: 100%; /* Fill the entire viewport height */
-    position: fixed;
-    width: 100%;
-    overflow: hidden;
-    z-index: 1;
-    bottom: 0; /* Start filling from the actual bottom */
   }
 }
