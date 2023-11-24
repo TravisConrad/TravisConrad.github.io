@@ -251,7 +251,7 @@ i.devicon {
   .drain {
     width: 50px; /* Adjusted width for mobile */
     height: 50px; /* Adjusted height for mobile */
-    bottom: -50px; /* Adjusted position to be below cards */
+    bottom: 0; /* Position at the very bottom */
     left: 0;
   }
 
@@ -268,5 +268,15 @@ i.devicon {
   .form-group input[type="email"],
   .form-group textarea {
     width: 100%;
+  }
+
+  /* Adjust rain container to fill from the bottom */
+  .rain-container {
+    height: 100vh; /* Changed to 100vh to enable rain effect on mobile */
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    bottom: 0; /* Start filling from the bottom */
   }
 }
