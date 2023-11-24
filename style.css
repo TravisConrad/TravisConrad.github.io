@@ -245,9 +245,13 @@ i.devicon {
     margin-top: 100px;
   }
 
-  .raindrop, .line {
+  .raindrop {
     display: block; /* Enable rain effect on mobile */
   }
+  .line {
+    display: none;
+  }
+  
 
   /* Remove drain and water filling features on mobile */
   .drain {
