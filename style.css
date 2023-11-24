@@ -257,6 +257,7 @@ i.devicon {
   /* Remove water filling features on mobile */
   .rain-container {
     display: none;
+    height: 100%; /* Make sure the rain container takes full height */
   }
 
   .cards-container {
