@@ -31,10 +31,9 @@ body {
 }
 
 .rain-container {
-  height: 50vh;
+  height: 100vh; /* Changed to 100vh to enable rain effect on mobile */
   position: fixed;
   width: 100%;
-  height: 100vh;
   overflow: hidden;
   z-index: 1;
 }
@@ -74,7 +73,7 @@ body {
 }
 
 .drain {
-  position: absolute;
+  position: fixed; /* Changed to fixed for mobile */
   bottom: 0;
   left: 0;
   width: 10%;
@@ -246,30 +245,23 @@ i.devicon {
   }
 
   .raindrop, .line {
-    display: none;
+    display: block; /* Enabled rain effect on mobile */
+  }
+
+  .drain {
+    width: 50px; /* Adjusted width for mobile */
+    height: 50px; /* Adjusted height for mobile */
   }
 
   .cards-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center cards horizontally */
-    justify-content: center; /* Center cards vertically if needed */
     padding: 20px;
     margin-top: 10px;
-}
+  }
 
-.card {
-    /* Keep the width as a percentage but ensure it doesn't exceed a certain max-width */
+  .card {
     width: 90%;
-    max-width: 300px; /* Adjust this value based on your design preference */
-    margin: 10px auto; /* Center the card with automatic horizontal margins */
-    transition: transform 0.6s, margin 0.6s; /* Smooth transition for flipping and repositioning */
-}
-
-.card.is-flipped {
-    margin-top: 50px; /* Adjust the top margin when the card is flipped if necessary */
-    margin-bottom: 50px; /* Adjust the bottom margin when the card is flipped if necessary */
-}
+    margin: 10px 0;
+  }
 
   .form-group input[type="email"],
   .form-group textarea {
