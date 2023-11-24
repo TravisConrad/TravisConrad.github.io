@@ -1,0 +1,89 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+#game-container {
+    max-width: 600px;
+    margin: auto;
+}
+
+/* Balance display */
+#balance {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Card styles */
+.card {
+    width: 100px;
+    height: 150px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 10px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.card.selected {
+    border-color: blue; /* Highlight selected card */
+}
+
+.blue-card, .red-card {
+    background-color: #f0f0f0; /* Default background color */
+}
+
+.blue-card {
+    background-color: blue; /* Blue card color */
+}
+
+.red-card {
+    background-color: red; /* Red card color */
+}
+
+/* Bet button styles */
+.bet-btn {
+    padding: 10px 15px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.bet-btn:hover, .bet-btn.selected {
+    background-color: #0056b3; /* Highlight selected bet */
+}
+
+#button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Play, Play Again, Restart, and Return buttons */
+#play-btn, #play-again-btn, #restart-btn, #return-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#play-btn:hover, #play-again-btn:hover, #restart-btn:hover, #return-btn:hover {
+    background-color: #218838;
+}
+
+#play-again-btn {
+    display: none; /* Initially hidden, shown after a game round */
+}
