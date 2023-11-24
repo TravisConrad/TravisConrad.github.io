@@ -63,6 +63,7 @@ body {
 
 #button-container {
     display: flex;
+    flex-wrap: wrap; /* Ensure buttons wrap on small screens */
     justify-content: center;
     gap: 10px;
     margin-top: 20px;
@@ -86,4 +87,21 @@ body {
 
 #play-again-btn {
     display: none; /* Initially hidden, shown after a game round */
+}
+
+/* Mobile-specific styles */
+@media (max-width: 600px) {
+    #game-container {
+        padding: 10px; /* Reduce padding for smaller screens */
+    }
+
+    .card {
+        width: 80px; /* Adjust card size for smaller screens */
+        height: 120px;
+        margin: 5px; /* Reduce margin for smaller screens */
+    }
+
+    #button-container {
+        margin-top: 10px;
+    }
 }
