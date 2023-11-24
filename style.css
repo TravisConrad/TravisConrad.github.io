@@ -251,6 +251,8 @@ i.devicon {
   .drain {
     width: 50px; /* Adjusted width for mobile */
     height: 50px; /* Adjusted height for mobile */
+    bottom: -50px; /* Adjusted position to be below cards */
+    left: 0;
   }
 
   .cards-container {
@@ -260,7 +262,7 @@ i.devicon {
 
   .card {
     width: 90%;
-    margin: 10px 0;
+    margin: 10px auto;
   }
 
   .form-group input[type="email"],
