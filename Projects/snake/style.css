@@ -1,0 +1,97 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #222;
+}
+
+#game-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background-color: black;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+#score {
+    position: absolute;
+    top: 120px; /* Adjust the top position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    display: block;
+}
+
+
+
+#welcome-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(75, 123, 190, 0.8);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#start-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    margin: 20px auto; /* Center the button horizontally */
+    display: block;
+}
+
+#game-over-screen {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1; /* Ensure it's on top of game container */
+}
+
+#final-score {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#restart-button, #return-button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+}
+
+/* Add styles for snake and food */
+.snake-segment {
+    background-color: #4caf50; /* Green */
+}
+
+.food {
+    background-color: red;
+}
