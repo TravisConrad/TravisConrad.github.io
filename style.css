@@ -75,7 +75,7 @@ body {
 .drain {
   position: fixed; /* Changed to fixed for mobile */
   bottom: 0;
-  left: 0;
+  left: 45%;
   width: 10%;
   height: 50px;
   z-index: 10;
@@ -138,7 +138,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
+  gap: 20px; /* Increase the space between cards */
   padding: 50px;
   margin-top: 2vh;
 }
@@ -176,6 +176,10 @@ body {
   justify-content: center;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s; /* Add this transition for centering effect */
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform; /* Improve performance */
 }
 
 .card-front {
@@ -188,6 +192,14 @@ body {
   transform: rotateY(180deg);
   padding: 20px;
 }
+
+/* Center the flipped cards */
+.card.is-flipped .card-inner {
+  transform: rotateY(180deg) translateX(-50%);
+}
+
+/* Rest of your CSS remains the same */
+
 
 i.devicon {
   font-size: 40px;
