@@ -123,9 +123,20 @@ setInterval(createRaindrop, 100);
 const drain = document.querySelector('.drain');
 drain.addEventListener('click', toggleDrain);
 
-// Added functionality for card flipping on click (suitable for mobile devices)
+// Function to check if the device is a touch device
+function isTouchDevice() {
+    return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+}
+
+// Functionality for card flipping
 document.querySelectorAll('.card').forEach(card => {
-    card.addEventListener('click', () => {
-        card.classList.toggle('is-flipped');
-    });
+    if (isTouchDevice()) {
+        // For touch devices, add click event to flip cards
+        card.addEventListener('click', () => {
+            card.classList.toggle('is-flipped');
+        });
+    } else {
+        // For non-touch devices, disable click event to flip
+        card.onclick = null;
+    }
 });
