@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Letter Labyrinth</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div id="landingPage">
+        <h1 class="landingPage">Letter Labyrinth</h1>
+        <button id="beginButton">Begin</button>
+    </div>
+
+    <div id="gameContainer" style="display:none;">
+        <h1 class="title">Letter Labyrinth</h1>
+        <div id="scoreboard" class="scoreboard">
+            Games Won: <span id="gamesWon">0</span> / <span id="gamesPlayed">0</span>
+        </div>    
+        <div id="grid" tabindex="0"></div>
+        <div id="alphabetContainer"></div> <!-- Container for the alphabet -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
