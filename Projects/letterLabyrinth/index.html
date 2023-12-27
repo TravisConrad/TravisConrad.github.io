@@ -12,11 +12,14 @@
 
     <div id="gameContainer" style="display:none;">
         <h1 class="title">Letter Labyrinth</h1>
+        <input type="text" id="hiddenInput" aria-hidden="true" />
         <div id="scoreboard" class="scoreboard">
             Games Won: <span id="gamesWon">0</span> / <span id="gamesPlayed">0</span>
-        </div>    
+        </div>
         <div id="grid" tabindex="0"></div>
         <div id="alphabetContainer"></div> <!-- Container for the alphabet -->
+        <!-- Invisible text input element -->
+        <input type="text" id="hiddenInput" style="opacity: 0; position: absolute; bottom: -100px;" />
     </div>
 
     <script src="script.js"></script>

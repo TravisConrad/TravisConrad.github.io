@@ -68,21 +68,35 @@ function initializeGame() {
         document.getElementById("grid").appendChild(cell);
     }
 
-    let grid = document.getElementById("grid");
-    grid.focus();
-    grid.addEventListener("keydown", handleKeyPress);
+    // Focus on the grid or another visible element
+    document.getElementById("grid").focus();
+
+    // Focus on hidden input and setup event listeners
+    let hiddenInput = document.getElementById("hiddenInput");
+    hiddenInput.focus();
+    hiddenInput.addEventListener("input", function(event) {
+        let value = event.target.value.toUpperCase();
+        event.target.value = ""; // Clear the input field
+        handleInput(value);
+    });
+
+    // Handle keydown for special keys (Backspace and Enter)
+    document.addEventListener("keydown", function(event) {
+        if (event.key === "Backspace" || event.key === "Enter") {
+            handleInput(event.key.toUpperCase());
+        }
+    });
 }
 
-function handleKeyPress(event) {
-    let allowedCharacters = /^[A-Za-z]$/;
-    if (event.key.match(allowedCharacters) && currentGuess.length < 5) {
-        currentGuess.push(event.key.toUpperCase());
-        updateGrid();
-    } else if (event.key === "Backspace" && currentGuess.length > 0) {
+function handleInput(value) {
+    if (value === "BACKSPACE" && currentGuess.length > 0) {
         currentGuess.pop();
         currentCell--;
         updateGrid(true);
-    } else if (event.key === "Enter" && currentGuess.length === 5) {
+    } else if (value.length === 1 && /^[A-Za-z]$/.test(value) && currentGuess.length < 5) {
+        currentGuess.push(value);
+        updateGrid();
+    } else if (value === "ENTER" && currentGuess.length === 5) {
         checkGuess();
     }
 }
@@ -100,7 +114,7 @@ function updateGrid(isBackspace = false) {
 function checkGuess() {
     let start = currentRow * 5;
     let wordOfTheDayArray = [...wordOfTheDay];
-    let isWordGuessedCorrectly = true; // Flag to track if the word is correctly guessed
+    let isWordGuessedCorrectly = true;
 
     for (let i = 0; i < 5; i++) {
         let cell = document.querySelectorAll('.cell')[start + i];
@@ -111,7 +125,6 @@ function checkGuess() {
             back.classList.add("correct");
         } else if (wordOfTheDay.includes(currentGuess[i])) {
             back.classList.add("present");
-            wordOfTheDayArray[wordOfTheDayArray.indexOf(currentGuess[i])] = null;
             isWordGuessedCorrectly = false;
         } else {
             back.classList.add("absent");
@@ -164,9 +177,7 @@ function handleGameOver(isWin) {
     }
     updateScoreboard();
 
-    let message = isWin ? 
-                  "Congratulations! You guessed the word!" : 
-                  "Game over! The word was " + wordOfTheDay + ".";
+    let message = isWin ? "Congratulations! You guessed the word!" : "Game over! The word was " + wordOfTheDay + ".";
     if (confirm(message + " Would you like to play again?")) {
         initializeGame();
     }

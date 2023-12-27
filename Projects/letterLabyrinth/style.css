@@ -182,3 +182,19 @@ body::before {
 .alphabetLetter.absent {
     background-color: rgb(99, 99, 99); /* Grey */
 }
+
+#hiddenInput {
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    top: 0;
+    height: 1px;
+    width: 1px;
+    border: none;
+    padding: 0;
+    margin: -1px; /* Prevents it from affecting layout */
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap; /* Added for screen reader accessibility */
+}
+
