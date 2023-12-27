@@ -198,3 +198,8 @@ body::before {
     white-space: nowrap; /* Added for screen reader accessibility */
 }
 
+body, html {
+    overflow: hidden;
+}
+
+
